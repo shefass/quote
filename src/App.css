@@ -16,10 +16,9 @@
   background-color: var(--main-txt-color);
   border: 2px solid var(--main-bg-color);
   border-radius: 13%;
-  width: 50vw;
-  height: 50vh;
+  width: 600px;
+  height: 500px;
   text-align: center; 
-  font-size: 100%;
   color: var(--main-bg-color);
 }
 
@@ -82,5 +81,24 @@ button:hover {
 #new-quote:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+@media screen and (max-width: 650px) {
+  #quote-box{ 
+    width: 95vw;
+    height: 60vh;
+  }
+}
+@media screen and (max-width: 400px) {
+  #quote-box{ 
+    width: 95vw;
+    height: 80vh;
+  }
+}
+@media screen and (max-height : 770px) {
+  #quote-box{ 
+    width: 95vw;
+    height:95vh;
+  }
 }
 
