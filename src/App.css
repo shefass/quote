@@ -50,6 +50,7 @@ button {
   -webkit-transition-duration: 0.6s; /* Safari */
   transition-duration: 0.6s;
   cursor: pointer;
+  outline: 0;
 }
 button:hover {
   background-color: white;
