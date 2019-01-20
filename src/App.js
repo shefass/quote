@@ -64,14 +64,12 @@ class Quate extends React.Component {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div id="loading">Loading...</div>;
     } else {
       return (
         <div id="quote-box">
           <h1 id="author">{title}</h1>
-          <br />
           <div id="text">{content}</div>
-          <br />
           <div id="buttons">
             <button id="new-quote" type="button" onClick={this.apicall}>
               <span>Next Quote</span>
