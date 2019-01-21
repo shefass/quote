@@ -29,6 +29,9 @@ class Quate extends React.Component {
     error: null,
     isLoaded: false,
     title: '',
+    colors: 0,
+    hasCaptureQuote: false,
+    hasCaptureTweet: false,
     content: []    };
 
   componentDidMount() {
@@ -47,6 +50,7 @@ class Quate extends React.Component {
             isLoaded: true,
             title: result.data[0].author,
             content: result.data[0].quote
+         
           });
         },
         (error) => {
@@ -57,9 +61,33 @@ class Quate extends React.Component {
         }
       )
     } 
+    onEnterQuote = (e) => {
+      this.setState({hasCaptureQuote: true})
+    }
+    onLeaveQuote = (e) => {
+      this.setState({hasCaptureQuote: false})
+    }
+    onEnterTweet = (e) => {
+      this.setState({hasCaptureTweet: true})
+    }
+    onLeaveTweet = (e) => {
+      this.setState({hasCaptureTweet: false})
+    }
    
   render() {
-    const { error, isLoaded, title, content } = this.state;
+    const { error, isLoaded, title, content, hasCaptureTweet, hasCaptureQuote } = this.state;
+    const buttonHoverQuote = {
+      backgroundColor: hasCaptureQuote && 'white',
+      color: hasCaptureQuote && 'black',
+    }
+    const spanStyle = {
+      padding: hasCaptureQuote && '10px',
+      transition: '0.5s'
+    }
+    const buttonHoverTweet = {
+      backgroundColor: hasCaptureTweet && 'white',
+      color: hasCaptureTweet && 'black'
+    }
     
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -71,14 +99,26 @@ class Quate extends React.Component {
           <h1 id="author">{title}</h1>
           <div id="text">{content}</div>
           <div id="buttons">
-            <button id="new-quote" type="button" onClick={this.apicall}>
-              <span>Next Quote</span>
+            <button 
+            id="new-quote" 
+            type="button"
+            onPointerEnter = {this.onEnterQuote}
+            onPointerLeave = {this.onLeaveQuote} 
+            style = {buttonHoverQuote}
+            onClick={this.apicall}>
+              <span style={spanStyle}>Next Quote</span>
             </button>
             <a 
               href={`${twitter}${title}: "${content}"`}
               target="_blank" 
               rel="noopener noreferrer" >
-              <button id="tweet-quote" type="button">
+              <button 
+              id="tweet-quote" 
+              type="button"
+              onPointerEnter = {this.onEnterTweet}
+              onPointerLeave = {this.onLeaveTweet}
+              style = {buttonHoverTweet}
+              >
                 Tweet!
               </button>
             </a>

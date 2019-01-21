@@ -1,6 +1,6 @@
 
 #wrapper {
-  --main-bg-color: #729ce9;
+  --main-bg-color: #729ce9; 
   --main-txt-color:  #33518b;
   background-color: var(--main-bg-color);
   height: 100vh;
@@ -51,10 +51,6 @@ button {
   cursor: pointer;
   outline: 0;
 }
-button:hover {
-  background-color: white;
-  color: black;
-}
 
 #new-quote {
   transition: all 0.5s;
@@ -65,23 +61,7 @@ button:hover {
   position: relative;
   transition: 0.5s;
 }
-#new-quote span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
 
-#new-quote:hover span {
-  padding-right: 25px;
-}
-
-#new-quote:hover span:after {
-  opacity: 1;
-  right: 0;
-}
 #loading {
   font-size: 4em;
   color: var(--main-txt-color);
