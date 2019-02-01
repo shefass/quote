@@ -1,7 +1,11 @@
 
-#wrapper {
-  --main-bg-color: #729ce9; 
+:root {
+  --main-bg-color: #6893e9; 
   --main-txt-color:  #33518b;
+}
+
+#wrapper {
+  
   background-color: var(--main-bg-color);
   height: 100vh;
   display: flex;
