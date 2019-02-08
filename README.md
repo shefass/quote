@@ -7,4 +7,4 @@ It's random quote machine.
 ## TODO
 
 Add cokies, so quotes don't repeat
-After push "New Quotes" change colors or maybe counter or something else
+
