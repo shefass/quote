@@ -17,6 +17,24 @@ class Quate extends Component {
     this.apicallTest();
   }
 
+  apicallTest = () => {
+    axiosRapidApihQL.post().then(
+      result => {
+        this.setState({
+          isLoaded: true,
+          title: result.data[0].author,
+          content: result.data[0].quote
+        });
+      },
+      error => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    );
+  };
+
   changeColors = () => {
     if (this.state.colors > 4) {
       this.setState({
@@ -36,6 +54,7 @@ class Quate extends Component {
         ),
       200
     );
+
     setTimeout(
       () =>
         document.documentElement.style.setProperty(
@@ -51,33 +70,16 @@ class Quate extends Component {
     this.changeColors();
   };
 
-  apicallTest = () => {
-    axiosRapidApihQL.post().then(
-      result => {
-        this.setState({
-          isLoaded: true,
-          title: result.data[0].author,
-          content: result.data[0].quote
-        });
-      },
-      error => {
-        this.setState({
-          isLoaded: true,
-          error
-        });
-      }
-    );
-  };
-  onEnterQuote = e => {
+  onEnterQuote = () => {
     this.setState({ hasCaptureQuote: true });
   };
-  onLeaveQuote = e => {
+  onLeaveQuote = () => {
     this.setState({ hasCaptureQuote: false });
   };
-  onEnterTweet = e => {
+  onEnterTweet = () => {
     this.setState({ hasCaptureTweet: true });
   };
-  onLeaveTweet = e => {
+  onLeaveTweet = () => {
     this.setState({ hasCaptureTweet: false });
   };
 

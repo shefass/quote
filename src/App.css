@@ -5,12 +5,12 @@
 }
 
 #wrapper {
-  
   background-color: var(--main-bg-color);
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;  
+  overflow: hidden;
 }
 
 #quote-box{
@@ -20,8 +20,9 @@
   background-color: var(--main-txt-color);
   border: 2px solid var(--main-bg-color);
   border-radius: 13%;
-  width: 600px;
-  height: 500px;
+  min-width: 300px;
+  min-height: 400px;
+  margin: 10em;
   text-align: center; 
   color: var(--main-bg-color);
 }
@@ -41,7 +42,7 @@
 #buttons {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 4%;
+  margin-bottom: 1em;
 }
 button {
   background-color:var(--main-bg-color); 
@@ -49,7 +50,7 @@ button {
   border: 2px solid var(--main-bg-color);
   border-radius: 15%;
   font-size: 2em;
-  padding: 10px;
+  
   -webkit-transition-duration: 0.6s; /* Safari */
   transition-duration: 0.6s;
   cursor: pointer;
@@ -70,34 +71,32 @@ button {
   font-size: 4em;
   color: var(--main-txt-color);
 }
-
-@media screen and (max-width: 650px) {
-  #quote-box{ 
-    width: 95vw;
-    height: 60vh;
+@media screen and (max-width :800px) {
+  #quote-box{
+    margin: 5em;
   }
 }
-@media screen and (max-width: 400px) {
-  #quote-box{ 
-    width: 95vw;
-    height: 80vh;
-  }
-  #text {
-    font-size: 2em;
-    font-family: "Fira Sans", sans-serif;
-    margin: 0px 2px;
+@media screen and (max-width :450px) {
+  #quote-box{
+    margin: 1em;
   }
   #author {
     font-size: 2em;
   }
-}
-@media screen and (max-height : 770px) {
-  #quote-box{ 
-    width: 95vw;
-    height:95vh;
+  #text {
+    font-size: 1.5em;
+    margin: 0px 2px;
   }
 }
 @media screen and (max-height :450px) {
+  #quote-box{
+    margin: 1em;
+    min-width: 70%;
+    min-height: 70%;
+  }
+  #author {
+    font-size: 2em;
+  }
   #text {
     font-size: 1.5em;
     margin: 0px 2px;
