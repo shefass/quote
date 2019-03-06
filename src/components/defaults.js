@@ -11,11 +11,11 @@ const axiosRapidApihQL = axios.create({
 const twitter =
   "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=";
 const colors = [
-  { bg: "violet", txt: "teal" },
+  { bg: "standart", txt: "teal" },
   { bg: "orange", txt: "black" },
   { bg: "yellow", txt: "blue" },
   { bg: "purple", txt: "grey" },
-  { bg: "olive", txt: "brown" },
+  { bg: "brown", txt: "olive" },
   { bg: "grey", txt: "pink" }
 ];
 
