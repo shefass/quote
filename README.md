@@ -3,6 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## My first react app
 
 It's random quote machine. 
+For portability removed CSS, switched to semantic ui.
 
 ## TODO
 
