@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Segment, Header, Container, Grid, Button, Icon } from "semantic-ui-react";
 
 import { axiosRapidApihQL, twitter, colors } from "./defaults";
 
@@ -8,8 +9,6 @@ class Quate extends Component {
     isLoaded: false,
     title: "",
     colors: 0,
-    hasCaptureQuote: false,
-    hasCaptureTweet: false,
     content: []
   };
 
@@ -45,24 +44,6 @@ class Quate extends Component {
         colors: this.state.colors + 1
       });
     }
-
-    setTimeout(
-      () =>
-        document.documentElement.style.setProperty(
-          "--main-bg-color",
-          colors[this.state.colors].bg
-        ),
-      200
-    );
-
-    setTimeout(
-      () =>
-        document.documentElement.style.setProperty(
-          "--main-txt-color",
-          colors[this.state.colors].txt
-        ),
-      200
-    );
   };
 
   doTwoActions = () => {
@@ -70,78 +51,53 @@ class Quate extends Component {
     this.changeColors();
   };
 
-  onEnterQuote = () => {
-    this.setState({ hasCaptureQuote: true });
-  };
-  onLeaveQuote = () => {
-    this.setState({ hasCaptureQuote: false });
-  };
-  onEnterTweet = () => {
-    this.setState({ hasCaptureTweet: true });
-  };
-  onLeaveTweet = () => {
-    this.setState({ hasCaptureTweet: false });
-  };
-
   render() {
     const {
       error,
       isLoaded,
       title,
-      content,
-      hasCaptureTweet,
-      hasCaptureQuote
-    } = this.state;
-    const buttonHoverQuote = {
-      backgroundColor: hasCaptureQuote && "white",
-      color: hasCaptureQuote && "black"
-    };
-    const spanStyle = {
-      padding: hasCaptureQuote && "10px",
-      transition: "0.5s"
-    };
-    const buttonHoverTweet = {
-      backgroundColor: hasCaptureTweet && "white",
-      color: hasCaptureTweet && "black"
-    };
+      content
+      
+     } = this.state;
+    
 
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return <Segment>Error: {error.message}</Segment>;
     } else if (!isLoaded) {
-      return <div id="loading">Loading...</div>;
+      return <Segment size='massive'>Loading...</Segment>;
     } else {
       return (
-        <div id="quote-box">
-          <h1 id="author">{title}</h1>
-          <div id="text">{content}</div>
-          <div id="buttons">
-            <button
-              id="new-quote"
-              type="button"
-              onPointerEnter={this.onEnterQuote}
-              onPointerLeave={this.onLeaveQuote}
-              style={buttonHoverQuote}
-              onClick={this.doTwoActions}
-            >
-              <span style={spanStyle}>Next Quote</span>
-            </button>
-            <a
-              href={`${twitter}${title}: "${content}"`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button
-                id="tweet-quote"
-                type="button"
-                onPointerEnter={this.onEnterTweet}
-                onPointerLeave={this.onLeaveTweet}
-                style={buttonHoverTweet}
-              >
-                Tweet!
-              </button>
-            </a>
-          </div>
-        </div>
+        <Segment textAlign='center' style={{borderRadius: '20px'}} >
+          <Header as="h1" color={colors[this.state.colors].txt} style={{fontSize: '3em'}}>
+            {title}
+          </Header>
+          <Container style={{fontSize: '2em', marginBottom: '1em', lineHeight: '1em'}}>
+            {content}
+          </Container>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={8}>
+                <Button content="Next Quote" 
+                onClick={this.doTwoActions}
+                color={colors[this.state.colors].txt}
+                icon='right arrow'
+                labelPosition='right'
+                />
+              </Grid.Column>
+              <Grid.Column width={8}>
+                <Button
+                  as="a"
+                  href={`${twitter}${title}: "${content}"`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color={colors[this.state.colors].txt}
+                >
+                  <Icon name='twitter' /> Tweet!
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
       );
     }
   }
